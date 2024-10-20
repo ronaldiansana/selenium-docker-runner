@@ -9,7 +9,7 @@ services:
       - hub
 #   this will create 4 chrome containers, default = 0
     deploy:
-      replicas: 0
+      replicas: 1
     env_file: .env
   firefox:
     image: selenium/node-firefox:4.24
@@ -17,5 +17,5 @@ services:
     depends_on:
       - hub
     deploy:
-      replicas: 0
+      replicas: 1
     env_file: .env
