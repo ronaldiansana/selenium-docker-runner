@@ -6,14 +6,21 @@ pipeline{
 
         stage('Run Tests'){
             steps{
-                bat "docker-compose up"
+                bat "docker-compose -f grid.yaml up -d"
             }
         }
 
-        stage('Bring Grid Down'){
+        stage('Run Tests'){
             steps{
-                bat "docker-compose down"
+                bat "docker-compose -f test-suites.yaml up"
             }
+        }
+    }
+
+    post {
+        always {
+            bat "docker-compose -f grid.yaml down"
+            bat "docker-compose -f test-suites.yaml down"
         }
     }
 
