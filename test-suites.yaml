@@ -3,6 +3,7 @@ services:
   vendor-portal:
     image: ronaldian/selenium
     environment:
+    # automatically gets the BROWSER env variable from Jenkinsfile
       - BROWSER
       - HUB_HOST=hub
       - THREAD_COUNT=3
@@ -12,6 +13,7 @@ services:
   flight-reservation:
     image: ronaldian/selenium
     environment:
+    # automatically gets the BROWSER env variable from Jenkinsfile
       - BROWSER
       - HUB_HOST=hub
       - THREAD_COUNT=4

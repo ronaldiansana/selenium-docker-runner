@@ -3,6 +3,7 @@ pipeline{
     agent any
 
     // generated from Jenkins > Job > Pipeline Syntax > Declarative Directive Generator
+    // parameters and env variables are the same, but has difference on Jenkins UI Build Now button
     parameters {
         choice choices: ['chrome', 'firefox'], description: 'Select the browser', name: 'BROWSER'
     }
