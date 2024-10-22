@@ -18,7 +18,14 @@ pipeline{
 
         stage('Run Tests'){
             steps{
-                bat "docker-compose -f test-suites.yaml up"
+                // --pull=always will always pull latest image from dockerhub
+                bat "docker-compose -f test-suites.yaml up --pull=always"
+                // Job should return FAIL if there's a failing test
+                script {
+                    if (fileExists('output/flight-reservation/testng-failed.xml') || fileExists('output/vendor-portal/testng-failed.xml')) {
+                        error('failed tests found')
+                    }
+                }
             }
         }
     }
